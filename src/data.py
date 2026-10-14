@@ -13,12 +13,15 @@ AUTOTUNE = tf.data.AUTOTUNE
 
 
 def download_dataset(cache_dir="data"):
-    """Descarga y descomprime el dataset. Devuelve la carpeta con las clases."""
+    """Descarga y descomprime el dataset. Devuelve la carpeta que contiene las clases."""
     path = tf.keras.utils.get_file(
         fname="flower_photos", origin=DATASET_URL, untar=True,
         cache_dir=str(Path(cache_dir).resolve()), cache_subdir=".",
     )
-    return Path(path)
+    match = next(Path(path).rglob("daisy"), None)
+    if match is None:
+        raise FileNotFoundError(f"No se encontró la carpeta de clases dentro de {path}")
+    return match.parent
 
 
 def list_images(data_dir):
