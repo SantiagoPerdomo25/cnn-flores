@@ -46,7 +46,7 @@ Se descarga automáticamente desde `storage.googleapis.com/download.tensorflow.o
 
 ### 1. Instalación
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+git clone <https://github.com/SantiagoPerdomo25/cnn-flores>
 cd cnn-flores
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
